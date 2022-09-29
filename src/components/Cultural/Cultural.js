@@ -5,6 +5,15 @@ const Cultural = () => {
 
     const [culturals,setCultural]=useState([]);
     const [time,setTime]=useState([]);
+    const [second,setSecond]=useState(localStorage.getItem("seconds")||0)
+
+
+    const addTosecond=(time)=>{
+              localStorage.setItem('seconds',time);
+              let number=localStorage.getItem("seconds");
+              setSecond(number)
+    }
+
 
     useEffect( ()=>{
         fetch('cultural.json')
@@ -16,7 +25,6 @@ const Cultural = () => {
    const handleAddToCalculation=(culturals)=>{
       const newTime=[...time,culturals];
       setTime(newTime);
-      console.log(time)
    }
 
    let total=0;
@@ -63,11 +71,11 @@ const Cultural = () => {
                  <div>
                     <h3>Add a Break:</h3>
                     <div className='break-content'>
-                         <button>10s</button>
-                         <button>20s</button>
-                         <button>30s</button>
-                         <button>40s</button>
-                         <button>50s</button>
+                         <button onClick={()=>addTosecond(10)}>10s</button>
+                         <button onClick={()=>addTosecond(20)}>20s</button>
+                         <button onClick={()=>addTosecond(30)}>30s</button>
+                         <button onClick={()=>addTosecond(40)}>40s</button>
+                         <button onClick={()=>addTosecond(50)}>50s</button>
                     </div>
                  </div>
 
@@ -80,7 +88,7 @@ const Cultural = () => {
                       
                      <div className='exercise-details'>
                         <h3>Break Time:</h3>
-                        <h3>0s</h3>
+                        <h3>{second}s</h3>
                      </div>
 
                  </div>
