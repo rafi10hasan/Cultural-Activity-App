@@ -4,12 +4,26 @@ import './Cultural.css'
 const Cultural = () => {
 
     const [culturals,setCultural]=useState([]);
+    const [time,setTime]=useState([]);
 
     useEffect( ()=>{
         fetch('cultural.json')
        .then(res => res.json())
        .then(data => setCultural(data))
     },[])
+   
+
+   const handleAddToCalculation=(culturals)=>{
+      const newTime=[...time,culturals];
+      setTime(newTime);
+      console.log(time)
+   }
+
+   let total=0;
+   for(const element of time){
+      total=total+element.time;
+   }
+
     return (
         <div className="main-container">
             
@@ -18,6 +32,7 @@ const Cultural = () => {
                 culturals.map(cultural=><Content
                     key={cultural.id}
                     cultural={cultural}
+                    handleAddToCalculation={handleAddToCalculation}
                     >
 
                     </Content>)
@@ -60,7 +75,7 @@ const Cultural = () => {
                      <h3>Exercise Details:</h3>
                      <div className='exercise-details'>
                         <h3>Exercise Time:</h3>
-                        <h3>0s</h3>
+                        <h3>{total}s</h3>
                      </div>
                       
                      <div className='exercise-details'>
