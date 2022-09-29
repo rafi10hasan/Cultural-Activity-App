@@ -72,3 +72,13 @@
     cursor: pointer;
     font-weight: bold;
 }
+
+@media screen and (min-width:612px) and (max-width:991px){
+    .cultural-container{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 10px;
+        
+    }
+    
+}
