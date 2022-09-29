@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 import Content from '../Content/Content';
 import './Cultural.css'
 const Cultural = () => {
@@ -21,6 +23,7 @@ const Cultural = () => {
        .then(data => setCultural(data))
     },[])
    
+    const notify = () => toast("congratulations!");
 
    const handleAddToCalculation=(culturals)=>{
       const newTime=[...time,culturals];
@@ -94,7 +97,8 @@ const Cultural = () => {
                  </div>
 
                  <div className='activity'>
-                    <button>Activity Completed</button>
+                    <button onClick={notify}>Activity Completed</button>
+                    <ToastContainer/>
                  </div>
             </div>
         </div>
