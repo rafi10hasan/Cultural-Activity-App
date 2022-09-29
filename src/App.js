@@ -1,10 +1,13 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Cultural from './components/Cultural/Cultural';
+import Header from './components/Header/Header';
 
 function App() {
   return (
-    <div className="App">
-    
+    <div>
+         <Header></Header>
+        <Cultural></Cultural> 
     </div>
   );
 }
